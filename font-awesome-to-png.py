@@ -243,6 +243,12 @@ icons = {
     "user-md": u"\uf200"
 }
 
+class ListAction(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        for icon in sorted(icons.keys()):
+            print icon
+        exit(0)
+
 def export_icon(icon, size, filename, font, color):
     image = Image.new("RGBA", (size, size), color=(0,0,0,0))
 
@@ -277,10 +283,8 @@ def export_icon(icon, size, filename, font, color):
 parser = argparse.ArgumentParser(
         description="Exports Font Awesome icons as PNG images.")
 
-parser.add_argument("size", type=int, nargs="?", default=16,
-        help="Icon size in pixels")
-parser.add_argument("icon", type=str, nargs="?",
-        help="The name of the icon to export (use --list for a list of names)")
+parser.add_argument("icon", type=str, nargs="+",
+        help="The name(s) of the icon(s) to export (or \"ALL\" for all icons)")
 parser.add_argument("--color", type=str, default="black",
         help="Color (HTML color code or name, default: black)")
 parser.add_argument("--filename", type=str,
@@ -288,8 +292,10 @@ parser.add_argument("--filename", type=str,
         "used as a prefix.")
 parser.add_argument("--font", type=str, default="fontawesome-webfont.ttf",
         help="Font file to use (default: fontawesome-webfont.ttf)")
-parser.add_argument("--list", action="store_true",
+parser.add_argument("--list", nargs=0, action=ListAction,
         help="List available icon names and exit")
+parser.add_argument("--size", type=int, default=16,
+        help="Icon size in pixels (default: 16)")
 
 args = parser.parse_args()
 icon = args.icon
@@ -297,11 +303,11 @@ size = args.size
 font = args.font
 color = args.color
 
-if args.list:
-    # List icon names in alphabetical order
-    for icon in sorted(icons.keys()):
-        print icon
-    exit(0)
+#if args.list:
+#    # List icon names in alphabetical order
+#    for icon in sorted(icons.keys()):
+#        print icon
+#    exit(0)
 
 if args.font:
     if not path.isfile(args.font) or not access(args.font, R_OK):
@@ -309,22 +315,23 @@ if args.font:
                 % (args.font))
         exit(1)
 
-if args.icon:
-    # Icon name was given
-    icon = args.icon
-
-    # Strip the "icon-" prefix, if present 
-    if icon.startswith("icon-"):
-        icon = icon[5:]
-
-    if icon in icons:
-        selected_icons = [ icon ]
-    else:
-        print >> sys.stderr, "Error: Unknown icon name"
-        sys.exit(1)
-else:
-    # No icon name given -- export all icons
+if args.icon == [ "ALL" ]:
+    # Export all icons
     selected_icons = sorted(icons.keys())
+else:
+    selected_icons = []
+    
+    # Icon name was given
+    for icon in args.icon:
+        # Strip the "icon-" prefix, if present 
+        if icon.startswith("icon-"):
+            icon = icon[5:]
+
+        if icon in icons:
+            selected_icons.append(icon)
+        else:
+            print >> sys.stderr, "Error: Unknown icon name (%s)" % (icon)
+            sys.exit(1)
 
 for icon in selected_icons:
     if len(selected_icons) > 1:
