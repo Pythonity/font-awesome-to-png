@@ -303,12 +303,6 @@ size = args.size
 font = args.font
 color = args.color
 
-#if args.list:
-#    # List icon names in alphabetical order
-#    for icon in sorted(icons.keys()):
-#        print icon
-#    exit(0)
-
 if args.font:
     if not path.isfile(args.font) or not access(args.font, R_OK):
         print >> sys.stderr, ("Error: Font file (%s) can't be opened"
