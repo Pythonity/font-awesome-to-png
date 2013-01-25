@@ -297,8 +297,8 @@ parser.add_argument("icon", type=str, nargs="+",
 parser.add_argument("--color", type=str, default="black",
         help="Color (HTML color code or name, default: black)")
 parser.add_argument("--filename", type=str,
-        help="The name of the output file. If all files are exported, it is " +
-        "used as a prefix.")
+        help="The name of the output file (it must end with \".png\"). If " +
+        "all files are exported, it is used as a prefix.")
 parser.add_argument("--font", type=str, default="fontawesome-webfont.ttf",
         help="Font file to use (default: fontawesome-webfont.ttf)")
 parser.add_argument("--list", nargs=0, action=ListAction,

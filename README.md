@@ -17,8 +17,9 @@ of specified size.
 
     optional arguments:
       --color COLOR        Color (HTML color code or name, default: black)
-      --filename FILENAME  The name of the output file. If all files are
-                           exported, it is used as a prefix.
+      --filename FILENAME  The name of the output file (it must end with
+                           ".png"). If all files are exported, it is used as a
+                           prefix.
       --font FONT          Font file to use (default: fontawesome-webfont.ttf)
       --list               List available icon names and exit
       --size SIZE          Icon size in pixels (default: 16)
