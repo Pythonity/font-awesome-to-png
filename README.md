@@ -21,11 +21,19 @@ of specified size.
                            ".png"). If all files are exported, it is used as a
                            prefix.
       --font FONT          Font file to use (default: fontawesome-webfont.ttf)
+      --css CSS            Path to the CSS file defining icon names (default: using internal icon list)
       --list               List available icon names and exit
       --size SIZE          Icon size in pixels (default: 16)
 
+    hidden optional arguments:
+     --list-update         List available icon names and codes in format suitable
+                           for updating the program source.
+
 To use the program, you need the Font Awesome TTF file, which is available in
 [Font Awesome Github repository] (https://github.com/FortAwesome/Font-Awesome).
+
+The internal icon list is matched to Font Awesome 4.0.1.  To use a later version,
+use font-awesome.css from the Font Awesome GitHub repository.
 
 ### Examples
 
