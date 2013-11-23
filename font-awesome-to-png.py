@@ -446,7 +446,8 @@ if __name__ == '__main__':
     parser.add_argument("--font", type=str, default="fontawesome-webfont.ttf",
             help="Font file to use (default: fontawesome-webfont.ttf)")
     parser.add_argument("--css", type=str, default="", action=LoadCSSAction,
-            help="Path to the CSS file defining icon names (default: using internal icon list)")
+            help="Path to the CSS file defining icon names (instead of the " +
+            "predefined list)")
     parser.add_argument("--list", nargs=0, action=ListAction,
             help="List available icon names and exit")
     parser.add_argument("--list-update", nargs=0, action=ListUpdateAction,

@@ -21,7 +21,8 @@ of specified size.
                            ".png"). If all files are exported, it is used as a
                            prefix.
       --font FONT          Font file to use (default: fontawesome-webfont.ttf)
-      --css CSS            Path to the CSS file defining icon names (default: using internal icon list)
+      --css CSS            Path to the CSS file defining icon names (instead of
+                           the predefined list)
       --list               List available icon names and exit
       --size SIZE          Icon size in pixels (default: 16)
 
