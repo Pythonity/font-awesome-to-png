@@ -372,7 +372,7 @@ class ListUpdateAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         print("icons = {")
         for icon in sorted(icons.keys()):
-            print('    "%s": u("\\u%s"),' % (icon, icons[icon][2:-1]))
+            print('    "%s": u("\\u%x"),' % (icon, ord(icons[icon][0])))
         print("}")
         exit(0)
 
