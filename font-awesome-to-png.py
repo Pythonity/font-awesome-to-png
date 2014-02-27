@@ -372,7 +372,7 @@ class ListUpdateAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         print("icons = {")
         for icon in sorted(icons.keys()):
-            print('    "%s": u("\\u%s"),' % (icon, icons[icon][2:-1]))
+            print('    "%s": u("\u%x"),' % (icon, ord(icons[icon])))
         print("}")
         exit(0)
 
@@ -428,7 +428,10 @@ class LoadCSSAction(argparse.Action):
                 name = match.groups()[0]
                 for declaration in rule.declarations:
                     if declaration.name == u"content":
-                        new_icons[name] = declaration.value.as_css()
+                        val = declaration.value.as_css()
+                        if val.startswith('"') and val.endswith('"'):
+                            val = val[1:-1]
+                        new_icons[name] = u("\u%s" % val[1:]);
         return new_icons
 
 
