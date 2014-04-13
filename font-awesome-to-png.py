@@ -5,7 +5,7 @@
 #
 # Exports Font Awesome icons as PNG images.
 #
-# Copyright (c) 2012-2013 Michal Wojciechowski (http://odyniec.net/)
+# Copyright (c) 2012-2014 Michal Wojciechowski (http://odyniec.net/)
 #
 # Font Awesome - http://fortawesome.github.com/Font-Awesome
 #
