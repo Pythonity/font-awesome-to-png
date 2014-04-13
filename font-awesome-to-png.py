@@ -372,7 +372,7 @@ class ListUpdateAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         print("icons = {")
         for icon in sorted(icons.keys()):
-            print('    "%s": u("\\u%x"),' % (icon, ord(icons[icon][0])))
+            print('    "%s": u("\u%x"),' % (icon, ord(icons[icon][0])))
         print("}")
         exit(0)
 
@@ -420,15 +420,17 @@ class LoadCSSAction(argparse.Action):
         new_icons = {}
         parser = tinycss.make_parser("page3")
         stylesheet = parser.parse_stylesheet_file(filename)
-        is_icon = re.compile(u("^\.fa-(.*):before$"))
+        is_icon = re.compile(u("\.fa-(.*):before,?"))
         for rule in stylesheet.rules:
             selector = rule.selector.as_css()
-            match = is_icon.match(selector)
-            if match:
+            for match in is_icon.finditer(selector):
                 name = match.groups()[0]
                 for declaration in rule.declarations:
                     if declaration.name == u("content"):
-                        new_icons[name] = declaration.value.as_css()
+                        val = declaration.value.as_css()
+                        if val.startswith('"') and val.endswith('"'):
+                            val = val[1:-1]
+                        new_icons[name] = u("\u%s" % val[1:])
         return new_icons
 
 
