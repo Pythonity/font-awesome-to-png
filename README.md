@@ -33,8 +33,8 @@ of specified size.
 To use the program, you need the Font Awesome TTF file, which is available in
 [Font Awesome Github repository] (https://github.com/FortAwesome/Font-Awesome).
 
-The internal icon list is matched to Font Awesome 4.0.1.  To use a later version,
-use font-awesome.css from the Font Awesome GitHub repository.
+The internal icon list is matched to Font Awesome 4.0.3.  To use a later/different
+version, use font-awesome.css from the Font Awesome GitHub repository.
 
 ### Examples
 
