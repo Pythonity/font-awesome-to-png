@@ -19,9 +19,15 @@ if sys.version < '3':
     import codecs
     def u(x):
         return codecs.unicode_escape_decode(x)[0]
+
+    def uchr(x):
+        return unichr(x)
 else:
     def u(x):
         return x
+
+    def uchr(x):
+        return chr(x)
 
 # Mapping of icon names to character codes
 icons = {
@@ -372,7 +378,7 @@ class ListUpdateAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         print("icons = {")
         for icon in sorted(icons.keys()):
-            print('    "%s": u("\u%x"),' % (icon, ord(icons[icon])))
+            print(u'    "%s": u("\\u%x"),' % (icon, ord(icons[icon])))
         print("}")
         exit(0)
 
@@ -431,7 +437,7 @@ class LoadCSSAction(argparse.Action):
                         val = declaration.value.as_css()
                         if val.startswith('"') and val.endswith('"'):
                             val = val[1:-1]
-                        new_icons[name] = u("\u%s" % val[1:]);
+                        new_icons[name] = uchr(int(val[1:], 16))
         return new_icons
 
 
@@ -502,4 +508,3 @@ if __name__ == '__main__':
                 (icon, filename, size, size))
 
         export_icon(icon, size, filename, font, color)
-
