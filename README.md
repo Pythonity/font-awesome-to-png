@@ -8,7 +8,7 @@ of specified size.
 ### Usage
 
     font-awesome-to-png.py [-h] [--color COLOR] [--filename FILENAME]
-                           [--font FONT] [--list] [--size SIZE]
+                           [--font FONT] [--css CSS] [--list] [--size SIZE]
                            icon [icon ...]
 
     positional arguments:
