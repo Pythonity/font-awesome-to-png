@@ -606,7 +606,14 @@ class LoadCSSAction(argparse.Action):
         import tinycss
         new_icons = {}
         parser = tinycss.make_parser("page3")
-        stylesheet = parser.parse_stylesheet_file(filename)
+
+        try:
+            stylesheet = parser.parse_stylesheet_file(filename)
+        except IOError:
+            print >> sys.stderr, ("Error: CSS file (%s) can't be opened"
+                % (filename))
+            exit(1)
+
         is_icon = re.compile(u("\.fa-(.*):before,?"))
         for rule in stylesheet.rules:
             selector = rule.selector.as_css()
