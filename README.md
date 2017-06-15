@@ -1,12 +1,9 @@
-### New version available!
+# This project is deprecated in favor of [icon-font-to-png](https://github.com/Pythonity/icon-font-to-png)
 
-This project is now deprecated in favor of the new, refactored and more
-universal version of the script located
-[here](https://github.com/Pythonity/icon-font-to-png). I encourage you
-to give it a spin, as it tries to fix all the issues of this version
-(icons being cut off, outdated font, etc.), and is being actively
-maintained. It also comes with a wrapper script for
-backwards-compatibility with this version.
+This project is deprecated in favor of the new, refactored and more universal [icon-font-to-png](https://github.com/Pythonity/icon-font-to-png).
+Please use it instead, as it fixes all issues this version has (icons being cut off, outdated font, etc.) and is being actively maintained. It also comes with a wrapper script for backwards-compatibility with this version.
+
+---
 
 Font Awesome to PNG
 ===================
