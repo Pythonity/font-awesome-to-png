@@ -56,3 +56,13 @@ Export the asterisk icon as 32x32 pixels image, in blue:
 Export all icons as 16x16 pixels images:
 
     font-awesome-to-png.py ALL
+
+## Authors
+Developed and maintained by [Pythonity][pythonity], a group of Python enthusiasts who love open source, have a neat [blog][pythonity blog] and are available [for hire][pythonity].
+
+Written by [Michał Wojciechowski][odyniec].
+
+
+[odyniec]: https://github.com/odyniec
+[pythonity]: https://pythonity.com
+[pythonity blog]: http://blog.pythonity.com
